@@ -4,6 +4,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import LoginScreen from './Screens/LoginScreen';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import RegisterScreen from './Screens/RegisterScreen';
 
 const Stack = createNativeStackNavigator();   // we had given all features of stack navigation to a variable 
 
@@ -22,6 +23,7 @@ export default function App() {
 
         {/** we added a screen in the stack navigation that we have imported  */}
         <Stack.Screen styles={{ alignItems: "center" }} name="Login" component={LoginScreen} />
+        <Stack.Screen styles={{ alignItems: "center" }} name="Register" component={RegisterScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

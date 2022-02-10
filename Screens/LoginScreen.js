@@ -1,9 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React, { useState } from 'react'
-import { Button, Input, Image } from 'react-native-elements'
+import { Button, Input, Image, Text } from 'react-native-elements'
 import { StatusBar } from 'expo-status-bar'
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -15,6 +15,11 @@ const LoginScreen = () => {
     return (
         <View style={styles.container}>
             <StatusBar style='light' />
+
+            <Text h4 style={{ marginBottom: 50, }}>
+                Welcome to ChatAPP
+            </Text>
+
             <Image source={{
                 uri: "https://cdn2.iconfinder.com/data/icons/metro-ui-dock/512/Messaging_alt.png"
             }}
@@ -27,8 +32,11 @@ const LoginScreen = () => {
             </View>
             <View>
 
-                <Button containerStyle={styles.button} onPress={signIn} title="Login" />
-                <Button containerStyle={styles.button} type="outline" title="Register" />
+                <Button raised containerStyle={styles.button} onPress={signIn} title="Login" />
+
+                {/**see the onPress function, how we navigated using stack navigation */}
+                <Button raised onPress={() => { navigation.navigate("Register") }}
+                    containerStyle={styles.button} type="outline" title="Register" />
             </View>
         </View>
     )
@@ -42,6 +50,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         padding: 10,
+
     },
     inputContainer: {
         width: 300
